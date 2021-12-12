@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { ActivityIndicator, FlatList, Text,SafeAreaView,StyleSheet,StatusBar } from 'react-native';
+import { ActivityIndicator, FlatList, Text,SafeAreaView,StyleSheet,StatusBar,Alert } from 'react-native';
 
 
 const HomeScreen = ({ navigation }) => {
@@ -24,6 +24,9 @@ const [isLoading, setLoading] = useState(true);
     getMovies();
   }, []);
 
+handleClick = (item) => {
+        navigation.navigate('State details', { data: item })
+}
 
   return (
             <SafeAreaView style={styles.container}>
@@ -34,7 +37,9 @@ const [isLoading, setLoading] = useState(true);
           keyExtractor={({ item }, index) => item}
           renderItem={({ item }) => (
             <Text
-style  = {styles.item}
+            style = {styles.item}
+ onPress={() => handleClick(item)
+}
             >{item.state}, {item.seats}
 
             </Text>
@@ -63,3 +68,4 @@ const styles = StyleSheet.create({
 });
 
 export {HomeScreen};
+

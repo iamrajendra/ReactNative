@@ -14,11 +14,11 @@ const App = () => {
           <Stack.Navigator>
 
         <Stack.Screen
-          name="Home"
+          name="parliament of india"
           component={HomeScreen}
-          options={{ title: 'Welcome' }}
+          options={{ title: 'Parliament of india' }}
         />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="State details" component={ProfileScreen} />
       </Stack.Navigator>
 
           </NavigationContainer>
