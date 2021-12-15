@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { ActivityIndicator, FlatList, Text,SafeAreaView,StyleSheet,StatusBar,Alert } from 'react-native';
+import { ActivityIndicator, FlatList, Text,SafeAreaView,StatusBar,Alert } from 'react-native';
+import {styles} from '../style/style.js'
 
 
 const HomeScreen = ({ navigation }) => {
@@ -8,7 +9,7 @@ const HomeScreen = ({ navigation }) => {
 const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const getMovies = async () => {
+  const getParliament = async () => {
      try {
       const response = await fetch('https://raw.githubusercontent.com/iamrajendra/services/master/seats.json');
       const json = await response.json();
@@ -21,7 +22,7 @@ const [isLoading, setLoading] = useState(true);
   }
 
   useEffect(() => {
-    getMovies();
+    getParliament();
   }, []);
 
 handleClick = (item) => {
@@ -52,20 +53,6 @@ handleClick = (item) => {
 
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 10,
-  },
-  item: {
-    padding: 5,
-    marginVertical: 5,
-    marginHorizontal: 5,
-  },
-  title: {
-    fontSize: 10,
-  },
-});
 
 export {HomeScreen};
 
