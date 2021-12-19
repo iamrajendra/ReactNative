@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import { ActivityIndicator, FlatList, Text,SafeAreaView,StatusBar,Alert } from 'react-native';
-import {styles} from '../style/style.js'
+import {styles} from '../style/style'
+import {getParliament} from '../service/Parliament'
 
 
 const HomeScreen = ({ navigation }) => {
@@ -9,20 +10,17 @@ const HomeScreen = ({ navigation }) => {
 const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const getParliament = async () => {
-     try {
-      const response = await fetch('https://raw.githubusercontent.com/iamrajendra/services/master/seats.json');
-      const json = await response.json();
-      setData(json);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }
 
+// life cycle method
   useEffect(() => {
-    getParliament();
+  setLoading(true)
+    getParliament().then((response)=>{
+//    console.log("Result ",response);
+setLoading(false)
+    setData(response);
+
+    })
+
   }, []);
 
 handleClick = (item) => {
