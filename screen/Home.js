@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text,SafeAreaView,StatusBar,Alert } from 'react-native';
 import {styles} from '../style/style'
 import {getParliament} from '../service/Parliament'
+import {Card} from 'react-native-shadow-cards';
+
 
 
 const HomeScreen = ({ navigation }) => {
@@ -15,7 +17,6 @@ const [isLoading, setLoading] = useState(true);
   useEffect(() => {
   setLoading(true)
     getParliament().then((response)=>{
-//    console.log("Result ",response);
 setLoading(false)
     setData(response);
 
@@ -35,6 +36,7 @@ handleClick = (item) => {
           data={data}
           keyExtractor={({ item }, index) => item}
           renderItem={({ item }) => (
+          <Card style={styles.cardview}>
             <Text
             style = {styles.item}
  onPress={() => handleClick(item)
@@ -42,6 +44,8 @@ handleClick = (item) => {
             >{item.state}, {item.seats}
 
             </Text>
+                  </Card>
+
           )}
         />
       )}

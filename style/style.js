@@ -6,6 +6,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 10,
+    justifyContent: 'center',
+     alignItems: 'center',
   },
   item: {
     padding: 5,
@@ -15,5 +17,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 10,
   },
+  cardview: {
+  padding:1,
+  margin:1
+
+  }
+
+
 });
 export {styles};
